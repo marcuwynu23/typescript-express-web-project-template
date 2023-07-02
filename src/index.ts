@@ -5,7 +5,6 @@
 import path from 'path';
 import express from 'express';
 import nunjucks from 'nunjucks';
-
 import constants from './constants';
 import router from './routes';
 
