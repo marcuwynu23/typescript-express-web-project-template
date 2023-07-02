@@ -1,28 +1,31 @@
 /*
- *   Copyright (c) 2023 
+ *   Copyright (c) 2023
  *   All rights reserved.
  */
-import express from 'express';
+import express from "express";
 
-let homeRouter = express.Router();
+let HOME_ROUTE = express.Router();
 //get
-homeRouter.get('/', (req, res) => {
-	res.render('home.html', { title: 'Home' })
+HOME_ROUTE.get("/", (req: any, res: any) => {
+  res.render("home.html", { title: "Home" });
 });
 //post
-homeRouter.post('/', (req, res) => {
-	res.send('Hello World!');
+HOME_ROUTE.post("/", (req: any, res: any) => {
+  res.send("Hello World!");
 });
 //put
-homeRouter.put('/', (req, res) => {
-	res.send('Hello World!');
+HOME_ROUTE.put("/", (req: any, res: any) => {
+  res.send("Hello World!");
 });
 //delete
-homeRouter.delete('/', (req, res) => {
-	res.render('home.html', { title: 'Home' })
+HOME_ROUTE.delete("/", (req: any, res: any) => {
+  res.render("home.html", { title: "Home" });
 });
 
-
+const NOT_FOUND = function (req: any, res: any) {
+  res.render("404.html", { title: "Not Found" });
+};
 export default {
-	HOME: homeRouter,
-}
+  HOME_ROUTE,
+  NOT_FOUND,
+};

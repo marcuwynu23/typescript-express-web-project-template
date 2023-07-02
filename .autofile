@@ -1,0 +1,5 @@
+$ taskkill /F /IM node.exe
+$ wr http://localhost:9000
+$ code .
+$ insomnia
++ npm start
