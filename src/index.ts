@@ -5,9 +5,7 @@
 import path from "path";
 import express from "express";
 import nunjucks from "nunjucks";
-import constants from "./constants";
-import router from "./routes";
-import route from "./routes";
+import routes from "./routes";
 const app = express();
 const port = process.env.PORT || 80;
 
@@ -21,11 +19,16 @@ nunjucks.configure(path.resolve(__dirname, "views"), {
   watch: true,
 });
 //static files
-app.use("/static", express.static(path.resolve(__dirname, "public")));
+app.use("/public", express.static(path.resolve(__dirname, "public")));
 
-//routes
-app.use("/", route.HOME_ROUTE);
-app.get("**", route.NOT_FOUND);
+const apiRouter = express.Router();
+apiRouter.use("/constants", routes.CONSTANTS_ROUTES);
+
+
+app.use("/api", apiRouter);
+app.get("**", routes.NOT_FOUND);
+
+
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}.`);
