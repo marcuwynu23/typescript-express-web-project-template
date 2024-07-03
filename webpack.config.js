@@ -1,7 +1,5 @@
 const webpack = require("webpack");
 const path = require("path");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-
 module.exports = {
   mode: "production",
   entry: "./js-generated/src/index.js",
@@ -30,9 +28,6 @@ module.exports = {
     },
   },
   plugins: [
-    new CopyWebpackPlugin({
-      patterns: [{ from: path.resolve(__dirname, "views"), to: "views" }],
-    }),
     new webpack.ContextReplacementPlugin(
       /express[/\\]lib/,
       path.resolve(__dirname, "node_modules")
