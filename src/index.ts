@@ -22,11 +22,15 @@ nunjucks.configure(path.resolve(__dirname, "src/views"), {
 app.use("/public", express.static(path.resolve(__dirname, "public")));
 
 const apiRouter = express.Router();
-apiRouter.use("/constants", routes.CONSTANTS_ROUTES);
+apiRouter.use("/constants", routes);
 
 
 app.use("/api", apiRouter);
-app.get("**", routes.NOT_FOUND);
+app.get("**", (req:any, res:any) => {
+  res.status(404).json({
+    message: "Not Found",
+  });
+});
 
 
 
