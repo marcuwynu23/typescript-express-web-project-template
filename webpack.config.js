@@ -1,8 +1,10 @@
+const webpack = require("webpack");
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+
 module.exports = {
   mode: "production",
-  entry: "./index.js",
+  entry: "./js-generated/src/index.js",
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "index.js",
@@ -22,12 +24,22 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    fallback: {
+      fsevents: false,
+    },
+  },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [
-        { from: "view", to: "view" },
-        { from: "public", to: "public" },
-      ],
+      patterns: [{ from: path.resolve(__dirname, "views"), to: "views" }],
     }),
+    new webpack.ContextReplacementPlugin(
+      /express[/\\]lib/,
+      path.resolve(__dirname, "node_modules")
+    ),
+    new webpack.ContextReplacementPlugin(
+      /nunjucks[/\\]src/,
+      path.resolve(__dirname, "node_modules")
+    ),
   ],
 };

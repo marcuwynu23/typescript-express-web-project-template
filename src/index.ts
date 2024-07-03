@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //nunjucks and set view path resolve
-nunjucks.configure(path.resolve(__dirname, "views"), {
+nunjucks.configure(path.resolve(__dirname, "src/views"), {
   autoescape: true,
   express: app,
   watch: true,

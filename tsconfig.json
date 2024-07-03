@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
     "target": "es2016", 
-    "esModuleInterop": true,                
+    "module": "commonjs",  
+    "outDir": "./js-generated",                       
     "rootDir": "./",                              
     "moduleResolution": "node",         
     "baseUrl": "./",                                 
-    "rootDirs": [],       
-    "outFile": "./",           
-    "outDir": "./", 
+    "rootDirs": [],                 
     "removeComments": true,          
     "esModuleInterop": true,          
     "forceConsistentCasingInFileNames": true,      
