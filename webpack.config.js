@@ -32,10 +32,6 @@ module.exports = {
       /express[/\\]lib/,
       path.resolve(__dirname, "node_modules")
     ),
-    new webpack.ContextReplacementPlugin(
-      /nunjucks[/\\]src/,
-      path.resolve(__dirname, "node_modules")
-    ),
     new webpack.IgnorePlugin({
       resourceRegExp: /^kerberos$/,
     }),
