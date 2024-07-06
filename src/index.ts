@@ -6,6 +6,9 @@ import path from "path";
 import express from "express";
 import nunjucks from "nunjucks";
 import routes from "./routes";
+import dotenv from "dotenv";
+
+dotenv.config();
 const app = express();
 const port = process.env.PORT || 80;
 
